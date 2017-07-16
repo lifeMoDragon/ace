@@ -44,6 +44,6 @@
   </filter>
   <filter-mapping>
       <filter-name>sitemesh</filter-name>
-      <url-pattern>/api/*</url-pattern>
+      <url-pattern>/china/*</url-pattern>
   </filter-mapping>
 </web-app>

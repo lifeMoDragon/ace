@@ -1,0 +1,6 @@
+ace：{
+中文动态：
+http://localhost:8080/ace/china/index
+英文静态：
+http://localhost:8080/ace/pages/index.html
+}

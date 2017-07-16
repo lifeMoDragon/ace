@@ -6,15 +6,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/api")
+@RequestMapping("")
 public class LoginController {
 	/**
-	 * 首页登录
+	 * 中文首页登录
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value ="/index",method = RequestMethod.GET)
-	public String toIndexPage(ModelMap model) {
+	@RequestMapping(value ="/china/index",method = RequestMethod.GET)
+	public String toChinaIndexPage(ModelMap model) {
 		System.out.println("首页登录");
 		return "aceChinaTemplate/index";
 	}
