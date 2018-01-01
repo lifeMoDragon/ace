@@ -1160,6 +1160,6 @@
 		<script src="<%= basePath%>/pages/assets/js/jquery.flot.resize.min.js"></script>
 
 		<!-- inline scripts related to this page -->
-		<script src="<%= basePath%>/pages/aceChinaTemplate/index.js"></script>
+		<script src="<%= basePath%>/pages/aceChinaTemplate/js/index.js"></script>
 	</body>
 </html>

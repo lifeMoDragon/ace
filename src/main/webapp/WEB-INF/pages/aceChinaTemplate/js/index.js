@@ -204,6 +204,7 @@ jQuery(function($) {
 
 
 	//show the dropdowns on top or bottom depending on window height and menu position
+	//根据窗口高度，菜单位置决定下拉面板显示在上方还是下方
 	$('#task-tab .dropdown-hover').on('mouseenter', function(e) {
 		var offset = $(this).offset();
 

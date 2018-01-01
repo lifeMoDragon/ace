@@ -85,6 +85,7 @@
 					<span class="icon-bar"></span>
 				</button>
 
+				<!-- 网站图标，网站名称 -->
 				<div class="navbar-header pull-left">
 					<a href="<%= basePath%>/index" class="navbar-brand">
 						<small>
@@ -93,24 +94,24 @@
 						</small>
 					</a>
 				</div>
-
+				
+				<!-- 消息通知提示栏 -->
 				<div class="navbar-buttons navbar-header pull-right" role="navigation">
 					<ul class="nav ace-nav">
 						<li class="grey dropdown-modal">
 							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
 								<i class="ace-icon fa fa-tasks"></i>
-								<span class="badge badge-grey">4</span>
+								<span class="badge badge-grey" id="unCompleteTaskNumber"></span>
 							</a>
 
 							<ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
-								<li class="dropdown-header">
+								<li class="dropdown-header" id="unCompleteTaskTitle">
 									<i class="ace-icon fa fa-check"></i>
-									4个待完成任务
 								</li>
 
 								<li class="dropdown-content">
-									<ul class="dropdown-menu dropdown-navbar">
-										<li>
+									<ul class="dropdown-menu dropdown-navbar" id="unCompleteTaskList">
+										<!-- <li>
 											<a href="#">
 												<div class="clearfix">
 													<span class="pull-left">软件更新</span>
@@ -160,7 +161,7 @@
 													<div style="width:90%" class="progress-bar progress-bar-success"></div>
 												</div>
 											</a>
-										</li>
+										</li> -->
 									</ul>
 								</li>
 
@@ -176,42 +177,46 @@
 						<li class="purple dropdown-modal">
 							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
 								<i class="ace-icon fa fa-bell icon-animated-bell"></i>
-								<span class="badge badge-important">8</span>
+								<span class="badge badge-important" id="notificationNumber"></span>
 							</a>
 
 							<ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
-								<li class="dropdown-header">
+								<li class="dropdown-header" id="notificationTitle">
 									<i class="ace-icon fa fa-exclamation-triangle"></i>
-									8个通知
 								</li>
 
 								<li class="dropdown-content">
-									<ul class="dropdown-menu dropdown-navbar navbar-pink">
+									<ul class="dropdown-menu dropdown-navbar navbar-pink" id="notificationList">
 										<li>
 											<a href="#">
-												<div class="clearfix">
+												<div class="clearfix" id="commentNotification">
 													<span class="pull-left">
 														<i class="btn btn-xs no-hover btn-pink fa fa-comment"></i>
-														新的评论
+														<span>新的评论</span>
 													</span>
-													<span class="pull-right badge badge-info">+12</span>
+													<span class="pull-right badge badge-info"></span>
 												</div>
 											</a>
 										</li>
 
 										<li>
 											<a href="#">
-												<i class="btn btn-xs btn-primary fa fa-user"></i>
-												Bob刚刚注册成为编辑...
+												<div class="clearfix" id="groupNotification">
+													<span class="pull-left">
+														<i class="btn btn-xs btn-primary fa fa-user"></i>
+														<span>Bob刚刚注册成为编辑...</span>
+													</span>
+													<span class="pull-right badge badge-success"></span>
+												</div>
 											</a>
 										</li>
 
 										<li>
 											<a href="#">
-												<div class="clearfix">
+												<div class="clearfix" id="orderNotification">
 													<span class="pull-left">
 														<i class="btn btn-xs no-hover btn-success fa fa-shopping-cart"></i>
-														新的订单
+														<span>新的订单</span>
 													</span>
 													<span class="pull-right badge badge-success">+8</span>
 												</div>
@@ -220,10 +225,10 @@
 
 										<li>
 											<a href="#">
-												<div class="clearfix">
+												<div class="clearfix" id="followerNotification">
 													<span class="pull-left">
 														<i class="btn btn-xs no-hover btn-info fa fa-twitter"></i>
-														粉丝
+														<span>粉丝</span>
 													</span>
 													<span class="pull-right badge badge-info">+11</span>
 												</div>
@@ -244,18 +249,17 @@
 						<li class="green dropdown-modal">
 							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
 								<i class="ace-icon fa fa-envelope icon-animated-vertical"></i>
-								<span class="badge badge-success">5</span>
+								<span class="badge badge-success" id="messageNumber"></span>
 							</a>
 
 							<ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
-								<li class="dropdown-header">
+								<li class="dropdown-header" id="messageTitle">
 									<i class="ace-icon fa fa-envelope-o"></i>
-									5封邮件
 								</li>
 
 								<li class="dropdown-content">
-									<ul class="dropdown-menu dropdown-navbar">
-										<li>
+									<ul class="dropdown-menu dropdown-navbar" id="messageList">
+										<%-- <li>
 											<a href="#" class="clearfix">
 												<img src="<%= basePath%>/pages/assets/images/avatars/avatar.png" class="msg-photo" alt="Alex's Avatar" />
 												<span class="msg-body">
@@ -338,7 +342,7 @@
 													</span>
 												</span>
 											</a>
-										</li>
+										</li> --%>
 									</ul>
 								</li>
 
@@ -1048,5 +1052,7 @@
 		<!-- ace scripts -->
 		<script src="<%= basePath%>/pages/assets/js/ace-elements.min.js"></script>
 		<script src="<%= basePath%>/pages/assets/js/ace.min.js"></script>
+		<!-- 控制台菜单 -->
+		<script src="<%= basePath%>/pages/aceChinaTemplate/decorator/js/decorator.js"></script>
 	</body>
 </html>

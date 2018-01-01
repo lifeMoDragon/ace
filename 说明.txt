@@ -1,6 +1,23 @@
-ace��{
-���Ķ�̬��
+ace：{
+中文动态：
 http://localhost:8080/ace/china/index
-Ӣ�ľ�̬��
+英文静态：
 http://localhost:8080/ace/pages/index.html
 }
+
+html,js,jsp,资源文件存放：
+pages/aceChinaTemplate--中文页面存放
+pages/aceChinaTemplate/decorator--框架文件，公用装饰页面
+java文件存放：
+com.modragon.ace.server--ace服务端
+com.modragon.ace.server.controller--ace所有控制器代码(输入，返回格式控制)
+com.modragon.ace.server.model--ace所有数据库表对应实体
+com.modragon.ace.server.model.dto--ace所有数据库表对应实体
+com.modragon.ace.server.model.vo--ace所有数据库视图对应实体
+com.modragon.ace.server.console--ace控制台部分代码
+com.modragon.ace.server.console.service--ace控制台部分服务实现代码
+com.modragon.ace.server.console.dao--ace控制台部分数据查询
+com.modragon.ace.server.console.model.request--ace控制台部分请求实体
+com.modragon.ace.server.console.model.response--ace控制台部分返回实体
+已完成：
+1:控制面板汉化
