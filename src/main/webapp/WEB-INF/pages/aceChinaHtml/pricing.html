@@ -1,82 +1,53 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-	String basePath = request.getContextPath();
-	if (basePath.endsWith("/")) {
-		basePath = basePath.substring(0, basePath.length() - 1);
-	}
-	String path = request.getScheme() + "://" + request.getServerName()
-			+ ":" + request.getServerPort() + basePath;
-%>
-<!DOCTYPE HTML>
-<html lang="zh-CN">
+<!DOCTYPE html>
+<html lang="zh">
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title><sitemesh:write property='title' /></title>
+		<title>Pricing Tables - Ace Admin</title>
 
-		<meta name="description" content="overview &amp; stats" />
+		<meta name="description" content="Large &amp; Small" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-		
-		<sitemesh:write property='head' />
 
 		<!-- bootstrap & fontawesome -->
-		<link rel="stylesheet" href="<%= basePath%>/pages/assets/css/bootstrap.min.css" />
-		<link rel="stylesheet" href="<%= basePath%>/pages/assets/font-awesome/4.5.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="../assets/font-awesome/4.5.0/css/font-awesome.min.css" />
 
-		<!-- 页面特定插件样式 -->
+		<!-- page specific plugin styles -->
 
-		<!-- 文本样式 -->
-		<link rel="stylesheet" href="<%= basePath%>/pages/assets/css/fonts.googleapis.com.css" />
+		<!-- text fonts -->
+		<link rel="stylesheet" href="../assets/css/fonts.googleapis.com.css" />
 
-		<!-- ace样式 -->
-		<link rel="stylesheet" href="<%= basePath%>/pages/assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
-
-		<!--[if lte IE 9]>
-			<link rel="stylesheet" href="<%= basePath%>/pages/assets/css/ace-part2.min.css" class="ace-main-stylesheet" />
-		<![endif]-->
-		<link rel="stylesheet" href="<%= basePath%>/pages/assets/css/ace-skins.min.css" />
-		<link rel="stylesheet" href="<%= basePath%>/pages/assets/css/ace-rtl.min.css" />
+		<!-- ace styles -->
+		<link rel="stylesheet" href="../assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
 
 		<!--[if lte IE 9]>
-		  <link rel="stylesheet" href="<%= basePath%>/pages/assets/css/ace-ie.min.css" />
+			<link rel="stylesheet" href="../assets/css/ace-part2.min.css" class="ace-main-stylesheet" />
+		<![endif]-->
+		<link rel="stylesheet" href="../assets/css/ace-skins.min.css" />
+		<link rel="stylesheet" href="../assets/css/ace-rtl.min.css" />
+
+		<!--[if lte IE 9]>
+		  <link rel="stylesheet" href="../assets/css/ace-ie.min.css" />
 		<![endif]-->
 
-		<!-- 与此页相关的内联样式 -->
+		<!-- inline styles related to this page -->
 
-		<!-- ace配置处理 -->
-		<script src="<%= basePath%>/pages/assets/js/ace-extra.min.js"></script>
+		<!-- ace settings handler -->
+		<script src="../assets/js/ace-extra.min.js"></script>
 
-		<!-- HTML5shiv and Respond.js 为IE8提供HTML5元素和媒体查询支持 -->
+		<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
 
 		<!--[if lte IE 8]>
-		<script src="<%= basePath%>/pages/assets/js/html5shiv.min.js"></script>
-		<script src="<%= basePath%>/pages/assets/js/respond.min.js"></script>
+		<script src="../assets/js/html5shiv.min.js"></script>
+		<script src="../assets/js/respond.min.js"></script>
 		<![endif]-->
-		
-		<script type="text/javascript">
-			var path = '<%= path%>';/*完整路径 */
-			var basePath = '<%= basePath%>';/*相对路径 */
-		</script>
-		<!-- basic scripts -->
-
-		<!--[if !IE]> -->
-		<script src="<%= basePath%>/pages/assets/js/jquery-2.1.4.min.js"></script>
-
-		<!-- <![endif]-->
-
-		<!--[if IE]>
-<script src="<%= basePath%>/pages/assets/js/jquery-1.11.3.min.js"></script>
-<![endif]-->
-		<script type="text/javascript">
-			if('ontouchstart' in document.documentElement) document.write("<script src='"+path+"/assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
-		</script>
-		<script src="<%= basePath%>/pages/assets/js/bootstrap.min.js"></script>
 	</head>
+
 	<body class="no-skin">
 		<div id="navbar" class="navbar navbar-default          ace-save-state">
 			<div class="navbar-container ace-save-state" id="navbar-container">
 				<button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
-					<span class="sr-only">侧边栏切换</span>
+					<span class="sr-only">Toggle sidebar</span>
 
 					<span class="icon-bar"></span>
 
@@ -85,36 +56,35 @@
 					<span class="icon-bar"></span>
 				</button>
 
-				<!-- 网站图标，网站名称 -->
 				<div class="navbar-header pull-left">
-					<a href="<%= basePath%>/index" class="navbar-brand">
+					<a href="index.html" class="navbar-brand">
 						<small>
 							<i class="fa fa-leaf"></i>
-							Ace控制台
+							Ace Admin
 						</small>
 					</a>
 				</div>
-				
-				<!-- 消息通知提示栏 -->
+
 				<div class="navbar-buttons navbar-header pull-right" role="navigation">
 					<ul class="nav ace-nav">
 						<li class="grey dropdown-modal">
 							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
 								<i class="ace-icon fa fa-tasks"></i>
-								<span class="badge badge-grey" id="unCompleteTaskNumber"></span>
+								<span class="badge badge-grey">4</span>
 							</a>
 
 							<ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
-								<li class="dropdown-header" id="unCompleteTaskTitle">
+								<li class="dropdown-header">
 									<i class="ace-icon fa fa-check"></i>
+									4 Tasks to complete
 								</li>
 
 								<li class="dropdown-content">
-									<ul class="dropdown-menu dropdown-navbar" id="unCompleteTaskList">
-										<!-- <li>
+									<ul class="dropdown-menu dropdown-navbar">
+										<li>
 											<a href="#">
 												<div class="clearfix">
-													<span class="pull-left">软件更新</span>
+													<span class="pull-left">Software Update</span>
 													<span class="pull-right">65%</span>
 												</div>
 
@@ -127,7 +97,7 @@
 										<li>
 											<a href="#">
 												<div class="clearfix">
-													<span class="pull-left">硬件升级</span>
+													<span class="pull-left">Hardware Upgrade</span>
 													<span class="pull-right">35%</span>
 												</div>
 
@@ -140,7 +110,7 @@
 										<li>
 											<a href="#">
 												<div class="clearfix">
-													<span class="pull-left">单元测试</span>
+													<span class="pull-left">Unit Testing</span>
 													<span class="pull-right">15%</span>
 												</div>
 
@@ -153,7 +123,7 @@
 										<li>
 											<a href="#">
 												<div class="clearfix">
-													<span class="pull-left">漏洞修复</span>
+													<span class="pull-left">Bug Fixes</span>
 													<span class="pull-right">90%</span>
 												</div>
 
@@ -161,13 +131,13 @@
 													<div style="width:90%" class="progress-bar progress-bar-success"></div>
 												</div>
 											</a>
-										</li> -->
+										</li>
 									</ul>
 								</li>
 
 								<li class="dropdown-footer">
 									<a href="#">
-										查看任务详情
+										See tasks with details
 										<i class="ace-icon fa fa-arrow-right"></i>
 									</a>
 								</li>
@@ -177,46 +147,42 @@
 						<li class="purple dropdown-modal">
 							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
 								<i class="ace-icon fa fa-bell icon-animated-bell"></i>
-								<span class="badge badge-important" id="notificationNumber"></span>
+								<span class="badge badge-important">8</span>
 							</a>
 
 							<ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
-								<li class="dropdown-header" id="notificationTitle">
+								<li class="dropdown-header">
 									<i class="ace-icon fa fa-exclamation-triangle"></i>
+									8 Notifications
 								</li>
 
 								<li class="dropdown-content">
-									<ul class="dropdown-menu dropdown-navbar navbar-pink" id="notificationList">
+									<ul class="dropdown-menu dropdown-navbar navbar-pink">
 										<li>
 											<a href="#">
-												<div class="clearfix" id="commentNotification">
+												<div class="clearfix">
 													<span class="pull-left">
 														<i class="btn btn-xs no-hover btn-pink fa fa-comment"></i>
-														<span>新的评论</span>
+														New Comments
 													</span>
-													<span class="pull-right badge badge-info"></span>
+													<span class="pull-right badge badge-info">+12</span>
 												</div>
 											</a>
 										</li>
 
 										<li>
 											<a href="#">
-												<div class="clearfix" id="groupNotification">
-													<span class="pull-left">
-														<i class="btn btn-xs btn-primary fa fa-user"></i>
-														<span>Bob刚刚注册成为编辑...</span>
-													</span>
-													<span class="pull-right badge badge-success"></span>
-												</div>
+												<i class="btn btn-xs btn-primary fa fa-user"></i>
+												Bob just signed up as an editor ...
 											</a>
 										</li>
 
 										<li>
 											<a href="#">
-												<div class="clearfix" id="orderNotification">
+												<div class="clearfix">
 													<span class="pull-left">
 														<i class="btn btn-xs no-hover btn-success fa fa-shopping-cart"></i>
-														<span>新的订单</span>
+														New Orders
 													</span>
 													<span class="pull-right badge badge-success">+8</span>
 												</div>
@@ -225,10 +191,10 @@
 
 										<li>
 											<a href="#">
-												<div class="clearfix" id="followerNotification">
+												<div class="clearfix">
 													<span class="pull-left">
 														<i class="btn btn-xs no-hover btn-info fa fa-twitter"></i>
-														<span>粉丝</span>
+														Followers
 													</span>
 													<span class="pull-right badge badge-info">+11</span>
 												</div>
@@ -239,7 +205,7 @@
 
 								<li class="dropdown-footer">
 									<a href="#">
-										查看所有通知
+										See all notifications
 										<i class="ace-icon fa fa-arrow-right"></i>
 									</a>
 								</li>
@@ -249,19 +215,20 @@
 						<li class="green dropdown-modal">
 							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
 								<i class="ace-icon fa fa-envelope icon-animated-vertical"></i>
-								<span class="badge badge-success" id="messageNumber"></span>
+								<span class="badge badge-success">5</span>
 							</a>
 
 							<ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
-								<li class="dropdown-header" id="messageTitle">
+								<li class="dropdown-header">
 									<i class="ace-icon fa fa-envelope-o"></i>
+									5 Messages
 								</li>
 
 								<li class="dropdown-content">
-									<ul class="dropdown-menu dropdown-navbar" id="messageList">
-										<%-- <li>
+									<ul class="dropdown-menu dropdown-navbar">
+										<li>
 											<a href="#" class="clearfix">
-												<img src="<%= basePath%>/pages/assets/images/avatars/avatar.png" class="msg-photo" alt="Alex's Avatar" />
+												<img src="../assets/images/avatars/avatar.png" class="msg-photo" alt="Alex's Avatar" />
 												<span class="msg-body">
 													<span class="msg-title">
 														<span class="blue">Alex:</span>
@@ -270,7 +237,7 @@
 
 													<span class="msg-time">
 														<i class="ace-icon fa fa-clock-o"></i>
-														<span>刚刚</span>
+														<span>a moment ago</span>
 													</span>
 												</span>
 											</a>
@@ -278,7 +245,7 @@
 
 										<li>
 											<a href="#" class="clearfix">
-												<img src="<%= basePath%>/pages/assets/images/avatars/avatar3.png" class="msg-photo" alt="Susan's Avatar" />
+												<img src="../assets/images/avatars/avatar3.png" class="msg-photo" alt="Susan's Avatar" />
 												<span class="msg-body">
 													<span class="msg-title">
 														<span class="blue">Susan:</span>
@@ -287,7 +254,7 @@
 
 													<span class="msg-time">
 														<i class="ace-icon fa fa-clock-o"></i>
-														<span>20分钟前</span>
+														<span>20 minutes ago</span>
 													</span>
 												</span>
 											</a>
@@ -295,7 +262,7 @@
 
 										<li>
 											<a href="#" class="clearfix">
-												<img src="<%= basePath%>/pages/assets/images/avatars/avatar4.png" class="msg-photo" alt="Bob's Avatar" />
+												<img src="../assets/images/avatars/avatar4.png" class="msg-photo" alt="Bob's Avatar" />
 												<span class="msg-body">
 													<span class="msg-title">
 														<span class="blue">Bob:</span>
@@ -312,7 +279,7 @@
 
 										<li>
 											<a href="#" class="clearfix">
-												<img src="<%= basePath%>/pages/assets/images/avatars/avatar2.png" class="msg-photo" alt="Kate's Avatar" />
+												<img src="../assets/images/avatars/avatar2.png" class="msg-photo" alt="Kate's Avatar" />
 												<span class="msg-body">
 													<span class="msg-title">
 														<span class="blue">Kate:</span>
@@ -329,7 +296,7 @@
 
 										<li>
 											<a href="#" class="clearfix">
-												<img src="<%= basePath%>/pages/assets/images/avatars/avatar5.png" class="msg-photo" alt="Fred's Avatar" />
+												<img src="../assets/images/avatars/avatar5.png" class="msg-photo" alt="Fred's Avatar" />
 												<span class="msg-body">
 													<span class="msg-title">
 														<span class="blue">Fred:</span>
@@ -342,13 +309,13 @@
 													</span>
 												</span>
 											</a>
-										</li> --%>
+										</li>
 									</ul>
 								</li>
 
 								<li class="dropdown-footer">
 									<a href="inbox.html">
-										查看所有邮件
+										See all messages
 										<i class="ace-icon fa fa-arrow-right"></i>
 									</a>
 								</li>
@@ -357,9 +324,9 @@
 
 						<li class="light-blue dropdown-modal">
 							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
-								<img class="nav-user-photo" src="<%= basePath%>/pages/assets/images/avatars/user.jpg" alt="Jason's Photo" />
+								<img class="nav-user-photo" src="../assets/images/avatars/user.jpg" alt="Jason's Photo" />
 								<span class="user-info">
-									<small>欢迎,</small>
+									<small>Welcome,</small>
 									Jason
 								</span>
 
@@ -370,14 +337,14 @@
 								<li>
 									<a href="#">
 										<i class="ace-icon fa fa-cog"></i>
-										设置
+										Settings
 									</a>
 								</li>
 
 								<li>
 									<a href="profile.html">
 										<i class="ace-icon fa fa-user"></i>
-										简介
+										Profile
 									</a>
 								</li>
 
@@ -386,7 +353,7 @@
 								<li>
 									<a href="#">
 										<i class="ace-icon fa fa-power-off"></i>
-										退出
+										Logout
 									</a>
 								</li>
 							</ul>
@@ -437,10 +404,10 @@
 				</div><!-- /.sidebar-shortcuts -->
 
 				<ul class="nav nav-list">
-					<li class="active">
-						<a href="<%= basePath%>/china/index">
+					<li class="">
+						<a href="index.html">
 							<i class="menu-icon fa fa-tachometer"></i>
-							<span class="menu-text"> 仪表面板 </span>
+							<span class="menu-text"> Dashboard </span>
 						</a>
 
 						<b class="arrow"></b>
@@ -450,7 +417,7 @@
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-desktop"></i>
 							<span class="menu-text">
-								UI &amp; 元素
+								UI &amp; Elements
 							</span>
 
 							<b class="arrow fa fa-angle-down"></b>
@@ -463,7 +430,7 @@
 								<a href="#" class="dropdown-toggle">
 									<i class="menu-icon fa fa-caret-right"></i>
 
-									布局
+									Layouts
 									<b class="arrow fa fa-angle-down"></b>
 								</a>
 
@@ -473,7 +440,7 @@
 									<li class="">
 										<a href="top-menu.html">
 											<i class="menu-icon fa fa-caret-right"></i>
-											顶部菜单
+											Top Menu
 										</a>
 
 										<b class="arrow"></b>
@@ -482,7 +449,7 @@
 									<li class="">
 										<a href="two-menu-1.html">
 											<i class="menu-icon fa fa-caret-right"></i>
-											双菜单 1
+											Two Menus 1
 										</a>
 
 										<b class="arrow"></b>
@@ -491,7 +458,7 @@
 									<li class="">
 										<a href="two-menu-2.html">
 											<i class="menu-icon fa fa-caret-right"></i>
-											双菜单2
+											Two Menus 2
 										</a>
 
 										<b class="arrow"></b>
@@ -500,7 +467,7 @@
 									<li class="">
 										<a href="mobile-menu-1.html">
 											<i class="menu-icon fa fa-caret-right"></i>
-											默认手机版菜单
+											Default Mobile Menu
 										</a>
 
 										<b class="arrow"></b>
@@ -509,7 +476,7 @@
 									<li class="">
 										<a href="mobile-menu-2.html">
 											<i class="menu-icon fa fa-caret-right"></i>
-											手机版菜单2
+											Mobile Menu 2
 										</a>
 
 										<b class="arrow"></b>
@@ -518,7 +485,7 @@
 									<li class="">
 										<a href="mobile-menu-3.html">
 											<i class="menu-icon fa fa-caret-right"></i>
-											手机版菜单3
+											Mobile Menu 3
 										</a>
 
 										<b class="arrow"></b>
@@ -529,7 +496,7 @@
 							<li class="">
 								<a href="typography.html">
 									<i class="menu-icon fa fa-caret-right"></i>
-									排版
+									Typography
 								</a>
 
 								<b class="arrow"></b>
@@ -538,7 +505,7 @@
 							<li class="">
 								<a href="elements.html">
 									<i class="menu-icon fa fa-caret-right"></i>
-									元素
+									Elements
 								</a>
 
 								<b class="arrow"></b>
@@ -547,7 +514,7 @@
 							<li class="">
 								<a href="buttons.html">
 									<i class="menu-icon fa fa-caret-right"></i>
-									按钮 &amp; 图标
+									Buttons &amp; Icons
 								</a>
 
 								<b class="arrow"></b>
@@ -556,7 +523,7 @@
 							<li class="">
 								<a href="content-slider.html">
 									<i class="menu-icon fa fa-caret-right"></i>
-									滚动内容
+									Content Sliders
 								</a>
 
 								<b class="arrow"></b>
@@ -565,7 +532,7 @@
 							<li class="">
 								<a href="treeview.html">
 									<i class="menu-icon fa fa-caret-right"></i>
-									树形图
+									Treeview
 								</a>
 
 								<b class="arrow"></b>
@@ -583,7 +550,7 @@
 							<li class="">
 								<a href="nestable-list.html">
 									<i class="menu-icon fa fa-caret-right"></i>
-									嵌套的列表
+									Nestable Lists
 								</a>
 
 								<b class="arrow"></b>
@@ -593,7 +560,7 @@
 								<a href="#" class="dropdown-toggle">
 									<i class="menu-icon fa fa-caret-right"></i>
 
-									三级菜单
+									Three Level Menu
 									<b class="arrow fa fa-angle-down"></b>
 								</a>
 
@@ -603,7 +570,7 @@
 									<li class="">
 										<a href="#">
 											<i class="menu-icon fa fa-leaf green"></i>
-											项目 #1
+											Item #1
 										</a>
 
 										<b class="arrow"></b>
@@ -613,7 +580,7 @@
 										<a href="#" class="dropdown-toggle">
 											<i class="menu-icon fa fa-pencil orange"></i>
 
-											第四级
+											4th level
 											<b class="arrow fa fa-angle-down"></b>
 										</a>
 
@@ -623,7 +590,7 @@
 											<li class="">
 												<a href="#">
 													<i class="menu-icon fa fa-plus purple"></i>
-													添加产品
+													Add Product
 												</a>
 
 												<b class="arrow"></b>
@@ -632,7 +599,7 @@
 											<li class="">
 												<a href="#">
 													<i class="menu-icon fa fa-eye pink"></i>
-													查看产品
+													View Products
 												</a>
 
 												<b class="arrow"></b>
@@ -647,7 +614,7 @@
 					<li class="">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-list"></i>
-							<span class="menu-text"> 表格 </span>
+							<span class="menu-text"> Tables </span>
 
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
@@ -658,7 +625,7 @@
 							<li class="">
 								<a href="tables.html">
 									<i class="menu-icon fa fa-caret-right"></i>
-									简单 &amp; 动态
+									Simple &amp; Dynamic
 								</a>
 
 								<b class="arrow"></b>
@@ -667,7 +634,7 @@
 							<li class="">
 								<a href="jqgrid.html">
 									<i class="menu-icon fa fa-caret-right"></i>
-									jqGrid插件
+									jqGrid plugin
 								</a>
 
 								<b class="arrow"></b>
@@ -678,7 +645,7 @@
 					<li class="">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-pencil-square-o"></i>
-							<span class="menu-text"> 表单 </span>
+							<span class="menu-text"> Forms </span>
 
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
@@ -689,7 +656,7 @@
 							<li class="">
 								<a href="form-elements.html">
 									<i class="menu-icon fa fa-caret-right"></i>
-									表单元素
+									Form Elements
 								</a>
 
 								<b class="arrow"></b>
@@ -698,7 +665,7 @@
 							<li class="">
 								<a href="form-elements-2.html">
 									<i class="menu-icon fa fa-caret-right"></i>
-									表单元素2
+									Form Elements 2
 								</a>
 
 								<b class="arrow"></b>
@@ -707,7 +674,7 @@
 							<li class="">
 								<a href="form-wizard.html">
 									<i class="menu-icon fa fa-caret-right"></i>
-									向导 &amp; 验证
+									Wizard &amp; Validation
 								</a>
 
 								<b class="arrow"></b>
@@ -725,7 +692,7 @@
 							<li class="">
 								<a href="dropzone.html">
 									<i class="menu-icon fa fa-caret-right"></i>
-									文件拖拽上传
+									Dropzone File Upload
 								</a>
 
 								<b class="arrow"></b>
@@ -736,7 +703,7 @@
 					<li class="">
 						<a href="widgets.html">
 							<i class="menu-icon fa fa-list-alt"></i>
-							<span class="menu-text"> 小部件 </span>
+							<span class="menu-text"> Widgets </span>
 						</a>
 
 						<b class="arrow"></b>
@@ -747,7 +714,7 @@
 							<i class="menu-icon fa fa-calendar"></i>
 
 							<span class="menu-text">
-								日历
+								Calendar
 
 								<span class="badge badge-transparent tooltip-error" title="2 Important Events">
 									<i class="ace-icon fa fa-exclamation-triangle red bigger-130"></i>
@@ -761,16 +728,16 @@
 					<li class="">
 						<a href="gallery.html">
 							<i class="menu-icon fa fa-picture-o"></i>
-							<span class="menu-text"> 图库 </span>
+							<span class="menu-text"> Gallery </span>
 						</a>
 
 						<b class="arrow"></b>
 					</li>
 
-					<li class="">
+					<li class="active open">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-tag"></i>
-							<span class="menu-text"> 更多页面 </span>
+							<span class="menu-text"> More Pages </span>
 
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
@@ -781,7 +748,7 @@
 							<li class="">
 								<a href="profile.html">
 									<i class="menu-icon fa fa-caret-right"></i>
-									用户简介
+									User Profile
 								</a>
 
 								<b class="arrow"></b>
@@ -790,16 +757,16 @@
 							<li class="">
 								<a href="inbox.html">
 									<i class="menu-icon fa fa-caret-right"></i>
-									收件箱
+									Inbox
 								</a>
 
 								<b class="arrow"></b>
 							</li>
 
-							<li class="">
+							<li class="active">
 								<a href="pricing.html">
 									<i class="menu-icon fa fa-caret-right"></i>
-									定价表
+									Pricing Tables
 								</a>
 
 								<b class="arrow"></b>
@@ -808,7 +775,7 @@
 							<li class="">
 								<a href="invoice.html">
 									<i class="menu-icon fa fa-caret-right"></i>
-									发货单
+									Invoice
 								</a>
 
 								<b class="arrow"></b>
@@ -817,7 +784,7 @@
 							<li class="">
 								<a href="timeline.html">
 									<i class="menu-icon fa fa-caret-right"></i>
-									时间轴
+									Timeline
 								</a>
 
 								<b class="arrow"></b>
@@ -826,7 +793,7 @@
 							<li class="">
 								<a href="search.html">
 									<i class="menu-icon fa fa-caret-right"></i>
-									搜索结果
+									Search Results
 								</a>
 
 								<b class="arrow"></b>
@@ -835,7 +802,7 @@
 							<li class="">
 								<a href="email.html">
 									<i class="menu-icon fa fa-caret-right"></i>
-									邮件模板
+									Email Templates
 								</a>
 
 								<b class="arrow"></b>
@@ -844,7 +811,7 @@
 							<li class="">
 								<a href="login.html">
 									<i class="menu-icon fa fa-caret-right"></i>
-									登录&amp; 注册
+									Login &amp; Register
 								</a>
 
 								<b class="arrow"></b>
@@ -857,7 +824,7 @@
 							<i class="menu-icon fa fa-file-o"></i>
 
 							<span class="menu-text">
-								其他页面
+								Other Pages
 
 								<span class="badge badge-primary">5</span>
 							</span>
@@ -871,7 +838,7 @@
 							<li class="">
 								<a href="faq.html">
 									<i class="menu-icon fa fa-caret-right"></i>
-									常见问题解答
+									FAQ
 								</a>
 
 								<b class="arrow"></b>
@@ -880,7 +847,7 @@
 							<li class="">
 								<a href="error-404.html">
 									<i class="menu-icon fa fa-caret-right"></i>
-									404错误
+									Error 404
 								</a>
 
 								<b class="arrow"></b>
@@ -889,7 +856,7 @@
 							<li class="">
 								<a href="error-500.html">
 									<i class="menu-icon fa fa-caret-right"></i>
-									500错误
+									Error 500
 								</a>
 
 								<b class="arrow"></b>
@@ -898,7 +865,7 @@
 							<li class="">
 								<a href="grid.html">
 									<i class="menu-icon fa fa-caret-right"></i>
-									网格
+									Grid
 								</a>
 
 								<b class="arrow"></b>
@@ -907,7 +874,7 @@
 							<li class="">
 								<a href="blank.html">
 									<i class="menu-icon fa fa-caret-right"></i>
-									空白页
+									Blank Page
 								</a>
 
 								<b class="arrow"></b>
@@ -927,9 +894,13 @@
 						<ul class="breadcrumb">
 							<li>
 								<i class="ace-icon fa fa-home home-icon"></i>
-								<a href="#">首页</a>
+								<a href="#">Home</a>
 							</li>
-							<li class="active">仪表面板</li>
+
+							<li>
+								<a href="#">More Pages</a>
+							</li>
+							<li class="active">Pricing Tables</li>
 						</ul><!-- /.breadcrumb -->
 
 						<div class="nav-search" id="nav-search">
@@ -959,27 +930,27 @@
 												<option data-skin="skin-3" value="#D0D0D0">#D0D0D0</option>
 											</select>
 										</div>
-										<span>&nbsp; 选择皮肤</span>
+										<span>&nbsp; Choose Skin</span>
 									</div>
 
 									<div class="ace-settings-item">
 										<input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-navbar" autocomplete="off" />
-										<label class="lbl" for="ace-settings-navbar"> 固定导航栏</label>
+										<label class="lbl" for="ace-settings-navbar"> Fixed Navbar</label>
 									</div>
 
 									<div class="ace-settings-item">
 										<input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-sidebar" autocomplete="off" />
-										<label class="lbl" for="ace-settings-sidebar"> 固定侧边栏</label>
+										<label class="lbl" for="ace-settings-sidebar"> Fixed Sidebar</label>
 									</div>
 
 									<div class="ace-settings-item">
 										<input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-breadcrumbs" autocomplete="off" />
-										<label class="lbl" for="ace-settings-breadcrumbs"> 固定的面包屑</label>
+										<label class="lbl" for="ace-settings-breadcrumbs"> Fixed Breadcrumbs</label>
 									</div>
 
 									<div class="ace-settings-item">
 										<input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-rtl" autocomplete="off" />
-										<label class="lbl" for="ace-settings-rtl"> 左右互换 </label>
+										<label class="lbl" for="ace-settings-rtl"> Right To Left (rtl)</label>
 									</div>
 
 									<div class="ace-settings-item">
@@ -994,12 +965,12 @@
 								<div class="pull-left width-50">
 									<div class="ace-settings-item">
 										<input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-hover" autocomplete="off" />
-										<label class="lbl" for="ace-settings-hover"> 子菜单悬停</label>
+										<label class="lbl" for="ace-settings-hover"> Submenu on Hover</label>
 									</div>
 
 									<div class="ace-settings-item">
 										<input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-compact" autocomplete="off" />
-										<label class="lbl" for="ace-settings-compact"> 紧凑的侧边栏</label>
+										<label class="lbl" for="ace-settings-compact"> Compact Sidebar</label>
 									</div>
 
 									<div class="ace-settings-item">
@@ -1010,10 +981,467 @@
 							</div><!-- /.ace-settings-box -->
 						</div><!-- /.ace-settings-container -->
 
-						<!-- 装饰页body begin-->
-						<sitemesh:write property='body' />
-						<!-- 装饰页body end-->
-						
+						<div class="page-header">
+							<h1>
+								Pricing Tables
+								<small>
+									<i class="ace-icon fa fa-angle-double-right"></i>
+									Large &amp; Small
+								</small>
+							</h1>
+						</div><!-- /.page-header -->
+
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+								<div class="row">
+									<div class="col-xs-6 col-sm-3 pricing-box">
+										<div class="widget-box widget-color-dark">
+											<div class="widget-header">
+												<h5 class="widget-title bigger lighter">Basic Package</h5>
+											</div>
+
+											<div class="widget-body">
+												<div class="widget-main">
+													<ul class="list-unstyled spaced2">
+														<li>
+															<i class="ace-icon fa fa-check green"></i>
+															10 GB Disk Space
+														</li>
+
+														<li>
+															<i class="ace-icon fa fa-check green"></i>
+															200 GB Bandwidth
+														</li>
+
+														<li>
+															<i class="ace-icon fa fa-check green"></i>
+															100 Email Accounts
+														</li>
+
+														<li>
+															<i class="ace-icon fa fa-check green"></i>
+															10 MySQL Databases
+														</li>
+
+														<li>
+															<i class="ace-icon fa fa-check green"></i>
+															$10 Ad Credit
+														</li>
+
+														<li>
+															<i class="ace-icon fa fa-times red"></i>
+															Free Domain
+														</li>
+													</ul>
+
+													<hr />
+													<div class="price">
+														$5
+														<small>/month</small>
+													</div>
+												</div>
+
+												<div>
+													<a href="#" class="btn btn-block btn-inverse">
+														<i class="ace-icon fa fa-shopping-cart bigger-110"></i>
+														<span>Buy</span>
+													</a>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="col-xs-6 col-sm-3 pricing-box">
+										<div class="widget-box widget-color-orange">
+											<div class="widget-header">
+												<h5 class="widget-title bigger lighter">Starter Package</h5>
+											</div>
+
+											<div class="widget-body">
+												<div class="widget-main">
+													<ul class="list-unstyled spaced2">
+														<li>
+															<i class="ace-icon fa fa-check green"></i>
+															50 GB Disk Space
+														</li>
+
+														<li>
+															<i class="ace-icon fa fa-check green"></i>
+															1 TB Bandwidth
+														</li>
+
+														<li>
+															<i class="ace-icon fa fa-check green"></i>
+															1000 Email Accounts
+														</li>
+
+														<li>
+															<i class="ace-icon fa fa-check green"></i>
+															100 MySQL Databases
+														</li>
+
+														<li>
+															<i class="ace-icon fa fa-check green"></i>
+															$25 Ad Credit
+														</li>
+
+														<li>
+															<i class="ace-icon fa fa-check green"></i>
+															Free Domain
+														</li>
+													</ul>
+
+													<hr />
+													<div class="price">
+														$10
+														<small>/month</small>
+													</div>
+												</div>
+
+												<div>
+													<a href="#" class="btn btn-block btn-warning">
+														<i class="ace-icon fa fa-shopping-cart bigger-110"></i>
+														<span>Buy</span>
+													</a>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="col-xs-6 col-sm-3 pricing-box">
+										<div class="widget-box widget-color-blue">
+											<div class="widget-header">
+												<h5 class="widget-title bigger lighter">Business Package</h5>
+											</div>
+
+											<div class="widget-body">
+												<div class="widget-main">
+													<ul class="list-unstyled spaced2">
+														<li>
+															<i class="ace-icon fa fa-check green"></i>
+															200 GB Disk Space
+														</li>
+
+														<li>
+															<i class="ace-icon fa fa-check green"></i>
+															Unlimited Bandwidth
+														</li>
+
+														<li>
+															<i class="ace-icon fa fa-check green"></i>
+															1000 Email Accounts
+														</li>
+
+														<li>
+															<i class="ace-icon fa fa-check green"></i>
+															200 MySQL Databases
+														</li>
+
+														<li>
+															<i class="ace-icon fa fa-check green"></i>
+															$25 Ad Credit
+														</li>
+
+														<li>
+															<i class="ace-icon fa fa-check green"></i>
+															Free Domain
+														</li>
+													</ul>
+
+													<hr />
+													<div class="price">
+														$15
+														<small>/month</small>
+													</div>
+												</div>
+
+												<div>
+													<a href="#" class="btn btn-block btn-primary">
+														<i class="ace-icon fa fa-shopping-cart bigger-110"></i>
+														<span>Buy</span>
+													</a>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="col-xs-6 col-sm-3 pricing-box">
+										<div class="widget-box widget-color-green">
+											<div class="widget-header">
+												<h5 class="widget-title bigger lighter">Ultimate Package</h5>
+											</div>
+
+											<div class="widget-body">
+												<div class="widget-main">
+													<ul class="list-unstyled spaced2">
+														<li>
+															<i class="ace-icon fa fa-check green"></i>
+															Unlimited Space
+														</li>
+
+														<li>
+															<i class="ace-icon fa fa-check green"></i>
+															Unlimited Bandwidth
+														</li>
+
+														<li>
+															<i class="ace-icon fa fa-check green"></i>
+															Unlimited Email Accounts
+														</li>
+
+														<li>
+															<i class="ace-icon fa fa-check green"></i>
+															Unlimited MySQL Databases
+														</li>
+
+														<li>
+															<i class="ace-icon fa fa-check green"></i>
+															$50 Ad Credit
+														</li>
+
+														<li>
+															<i class="ace-icon fa fa-check green"></i>
+															2 Free Domains
+														</li>
+													</ul>
+
+													<hr />
+													<div class="price">
+														$25
+														<small>/month</small>
+													</div>
+												</div>
+
+												<div>
+													<a href="#" class="btn btn-block btn-success">
+														<i class="ace-icon fa fa-shopping-cart bigger-110"></i>
+														<span>Buy</span>
+													</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="space-24"></div>
+								<h3 class="header smaller red">Small Style</h3>
+
+								<div class="row">
+									<div class="col-xs-4 col-sm-3 pricing-span-header">
+										<div class="widget-box transparent">
+											<div class="widget-header">
+												<h5 class="widget-title bigger lighter">Package Name</h5>
+											</div>
+
+											<div class="widget-body">
+												<div class="widget-main no-padding">
+													<ul class="list-unstyled list-striped pricing-table-header">
+														<li>Disk Space </li>
+														<li>Bandwidth </li>
+														<li>Email Accounts </li>
+														<li>MySQL Databases </li>
+														<li>Ad Credit </li>
+														<li>Free Domain </li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="col-xs-8 col-sm-9 pricing-span-body">
+										<div class="pricing-span">
+											<div class="widget-box pricing-box-small widget-color-red3">
+												<div class="widget-header">
+													<h5 class="widget-title bigger lighter">Basic</h5>
+												</div>
+
+												<div class="widget-body">
+													<div class="widget-main no-padding">
+														<ul class="list-unstyled list-striped pricing-table">
+															<li> 10 GB </li>
+															<li> 200 GB </li>
+															<li> 100 </li>
+															<li> 10 </li>
+															<li> $10 </li>
+
+															<li>
+																<i class="ace-icon fa fa-times red"></i>
+															</li>
+														</ul>
+
+														<div class="price">
+															<span class="label label-lg label-inverse arrowed-in arrowed-in-right">
+																$5
+																<small>/month</small>
+															</span>
+														</div>
+													</div>
+
+													<div>
+														<a href="#" class="btn btn-block btn-sm btn-danger">
+															<span>Buy</span>
+														</a>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="pricing-span">
+											<div class="widget-box pricing-box-small widget-color-orange">
+												<div class="widget-header">
+													<h5 class="widget-title bigger lighter">Starter</h5>
+												</div>
+
+												<div class="widget-body">
+													<div class="widget-main no-padding">
+														<ul class="list-unstyled list-striped pricing-table">
+															<li> 50 GB </li>
+															<li> 1 TB </li>
+															<li> 1000 </li>
+															<li> 100 </li>
+															<li> $25 </li>
+
+															<li>
+																<i class="ace-icon fa fa-check green"></i>
+																1
+															</li>
+														</ul>
+
+														<div class="price">
+															<span class="label label-lg label-inverse arrowed-in arrowed-in-right">
+																$10
+																<small>/month</small>
+															</span>
+														</div>
+													</div>
+
+													<div>
+														<a href="#" class="btn btn-block btn-sm btn-warning">
+															<span>Buy</span>
+														</a>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="pricing-span">
+											<div class="widget-box pricing-box-small widget-color-blue">
+												<div class="widget-header">
+													<h5 class="widget-title bigger lighter">Business</h5>
+												</div>
+
+												<div class="widget-body">
+													<div class="widget-main no-padding">
+														<ul class="list-unstyled list-striped pricing-table">
+															<li> 200 GB </li>
+															<li> Unlimited </li>
+															<li> 1000 </li>
+															<li> 200 </li>
+															<li> $25 </li>
+
+															<li>
+																<i class="ace-icon fa fa-check green"></i>
+																1
+															</li>
+														</ul>
+
+														<div class="price">
+															<span class="label label-lg label-inverse arrowed-in arrowed-in-right">
+																$15
+																<small>/month</small>
+															</span>
+														</div>
+													</div>
+
+													<div>
+														<a href="#" class="btn btn-block btn-sm btn-primary">
+															<span>Buy</span>
+														</a>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="pricing-span">
+											<div class="widget-box pricing-box-small widget-color-green">
+												<div class="widget-header">
+													<h5 class="widget-title bigger lighter">Unlimited</h5>
+												</div>
+
+												<div class="widget-body">
+													<div class="widget-main no-padding">
+														<ul class="list-unstyled list-striped pricing-table">
+															<li> Unlimited </li>
+															<li> Unlimited </li>
+															<li> Unlimited </li>
+															<li> Unlimited </li>
+															<li> $50 </li>
+
+															<li>
+																<i class="ace-icon fa fa-check green"></i>
+																2
+															</li>
+														</ul>
+
+														<div class="price">
+															<span class="label label-lg label-inverse arrowed-in arrowed-in-right">
+																$25
+																<small>/month</small>
+															</span>
+														</div>
+													</div>
+
+													<div>
+														<a href="#" class="btn btn-block btn-sm btn-success">
+															<span>Buy</span>
+														</a>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="pricing-span">
+											<div class="widget-box pricing-box-small widget-color-grey">
+												<div class="widget-header">
+													<h5 class="widget-title bigger lighter">Extreme</h5>
+												</div>
+
+												<div class="widget-body">
+													<div class="widget-main no-padding">
+														<ul class="list-unstyled list-striped pricing-table">
+															<li> Unlimited </li>
+															<li> Unlimited </li>
+															<li> Unlimited </li>
+															<li> Unlimited </li>
+															<li> $100 </li>
+
+															<li>
+																<i class="ace-icon fa fa-check green"></i>
+																3
+															</li>
+														</ul>
+
+														<div class="price">
+															<span class="label label-lg label-inverse arrowed-in arrowed-in-right">
+																$30
+																<small>/month</small>
+															</span>
+														</div>
+													</div>
+
+													<div>
+														<a href="#" class="btn btn-block btn-sm btn-grey">
+															<span>Buy</span>
+														</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div><!-- PAGE CONTENT ENDS -->
+							</div><!-- /.col -->
+						</div><!-- /.row -->
 					</div><!-- /.page-content -->
 				</div>
 			</div><!-- /.main-content -->
@@ -1023,7 +1451,7 @@
 					<div class="footer-content">
 						<span class="bigger-120">
 							<span class="blue bolder">Ace</span>
-							应用程序 &copy; 2013-2014
+							Application &copy; 2013-2014
 						</span>
 
 						&nbsp; &nbsp;
@@ -1048,11 +1476,28 @@
 				<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
 			</a>
 		</div><!-- /.main-container -->
-		
+
+		<!-- basic scripts -->
+
+		<!--[if !IE]> -->
+		<script src="../assets/js/jquery-2.1.4.min.js"></script>
+
+		<!-- <![endif]-->
+
+		<!--[if IE]>
+<script src="../assets/js/jquery-1.11.3.min.js"></script>
+<![endif]-->
+		<script type="text/javascript">
+			if('ontouchstart' in document.documentElement) document.write("<script src='../assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+		</script>
+		<script src="../assets/js/bootstrap.min.js"></script>
+
+		<!-- page specific plugin scripts -->
+
 		<!-- ace scripts -->
-		<script src="<%= basePath%>/pages/assets/js/ace-elements.min.js"></script>
-		<script src="<%= basePath%>/pages/assets/js/ace.min.js"></script>
-		<!-- 控制台菜单 -->
-		<script src="<%= basePath%>/pages/aceChinaTemplate/decorator/js/decorator.js"></script>
+		<script src="../assets/js/ace-elements.min.js"></script>
+		<script src="../assets/js/ace.min.js"></script>
+
+		<!-- inline scripts related to this page -->
 	</body>
 </html>

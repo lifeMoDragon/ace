@@ -7,9 +7,41 @@ $(function (){
 
 //框架初始化
 function initDecoratorPage(){
+	initMenu();
 	initUnCompleteTaskMsg();
 	initNotificationsMsg();
 	initMessagesMsg();
+}
+
+//初始化菜单
+function initMenu(){
+	$.ajax({
+		url : basePath + '/china/console/menu',
+		type:"get",
+		cache:false,
+		dataType:"json",
+		success:function(data){
+
+		}
+	});
+	$.ajax({
+		url : basePath + '/china/console/example1',
+		type:"get",
+		cache:false,
+		dataType:"json",
+		success:function(data){
+
+		}
+	});
+	$.ajax({
+		url : basePath + '/china/console/example2',
+		type:"get",
+		cache:false,
+		dataType:"json",
+		success:function(data){
+
+		}
+	});
 }
 
 //初始化未完成任务信息

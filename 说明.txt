@@ -3,6 +3,8 @@ ace：{
 http://localhost:8080/ace/china/index
 英文静态：
 http://localhost:8080/ace/pages/index.html
+中文静态：
+http://localhost:8080/ace/pages/aceChinaHtml/index.html
 }
 
 html,js,jsp,资源文件存放：
@@ -19,5 +21,7 @@ com.modragon.ace.server.console.service--ace控制台部分服务实现代码
 com.modragon.ace.server.console.dao--ace控制台部分数据查询
 com.modragon.ace.server.console.model.request--ace控制台部分请求实体
 com.modragon.ace.server.console.model.response--ace控制台部分返回实体
+com.modragon.ace.server.utility--公用工具代码
+com.modragon.ace.server.utility.constants--公用常量
 已完成：
-1:控制面板汉化
+1:控制面板汉化--decorator
